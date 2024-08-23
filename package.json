@@ -1,0 +1,27 @@
+{
+  "name": "express-starter-template",
+  "version": "1.0.0",
+  "description": "A basic express js backend template",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "prod": "nodemon dist/index.js"
+  },
+  "keywords": [
+    "template",
+    "express",
+    "nodejs"
+  ],
+  "author": "utkarsh",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
