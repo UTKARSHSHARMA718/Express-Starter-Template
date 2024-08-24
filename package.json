@@ -2,10 +2,11 @@
   "name": "express-starter-template",
   "version": "1.0.0",
   "description": "A basic express js backend template",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "prod": "nodemon dist/index.js"
+    "dev": "nodemon src/server.ts",
+    "prod": "NODE_ENV=production node dist/server.js",
+    "dist": "npx tsc"
   },
   "keywords": [
     "template",
@@ -16,12 +17,22 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "source-map-support": "^0.5.21",
+    "winston": "^3.14.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^4.17.21",
     "@types/node": "^22.5.0",
+    "@types/source-map-support": "^0.5.10",
+    "eslint": "^9.9.1",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0"
   }
 }
