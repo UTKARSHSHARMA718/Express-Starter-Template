@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { THttpResponse } from "../types/types"
 import { EApplicationEnvironment } from "../constant/const"
+import logger from "./logger"
 
 export default (
     req: Request,
@@ -22,12 +23,12 @@ export default (
     }
 
     // Log
-    console.log("Controller Response", {
+    logger.log("Controller Response", {
         meta: response,
     })
 
     // Production Env Check
-    if (process.env.NODE === EApplicationEnvironment.PRODUCTION) {
+    if (process.env.ENV_STATE === EApplicationEnvironment.PRODUCTION) {
         delete response.request.ip
     }
 

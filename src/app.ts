@@ -4,10 +4,20 @@ import router from "./routers/apiRouter"
 import globalErrorHandler from "./middleware/globalErrorHandler"
 import responseMessage from "./constant/responseMessage"
 import httpError from "./utils/httpError"
+import helmet from "helmet"
+import cors from "cors"
 
 const app = express()
 
 //Middlewares
+app.use(helmet())
+app.use(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    cors({
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        origin: process.env.ORIGIN_URL,
+    })
+)
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "../", "public")))
 

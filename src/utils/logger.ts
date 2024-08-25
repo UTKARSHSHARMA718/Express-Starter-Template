@@ -7,8 +7,10 @@ import util from "util"
 import { EApplicationEnvironment } from "../constant/const"
 import path from "path"
 import * as sourceMapSupport from "source-map-support"
+import dotenv from 'dotenv'
+dotenv.config()
 
-//linking trace support 
+//linking trace support
 sourceMapSupport.install()
 
 const consoleLogFormate = format.printf((info) => {
@@ -58,7 +60,7 @@ const fileLogFormate = format.printf((info) => {
 })
 
 const consoleTransport = (): Array<ConsoleTransportInstance> => {
-    if (process.env.NODE === EApplicationEnvironment.DEVELOPMENT) {
+    if (process.env.ENV_STATE === EApplicationEnvironment.DEVELOPMENT) {
         return [
             new transports.Console({
                 level: "info",
@@ -75,9 +77,10 @@ const fileTransport = (): Array<FileTransportInstance> => {
         new transports.File({
             filename: path.join(
                 __dirname,
-                "../",
+                "..",
+                "..",
                 "logs",
-                `${process.env.NODE}.log`
+                `${process.env.ENV_STATE}.log`
             ),
             level: "info",
             format: format.combine(format.timestamp(), fileLogFormate),

@@ -2,6 +2,7 @@ import { Request } from "express"
 import { THttpError } from "../types/types"
 import { EApplicationEnvironment } from "../constant/const"
 import responseMessage from "../constant/responseMessage"
+import logger from "./logger"
 
 export default (
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
@@ -26,12 +27,12 @@ export default (
     }
 
     //Logs
-    console.info("Controller Response", {
+    logger.info("Controller Response", {
         meta: errorObj,
     })
 
     //Production check
-    if (process.env.NODE === EApplicationEnvironment.PRODUCTION) {
+    if (process.env.ENV_STATE === EApplicationEnvironment.PRODUCTION) {
         delete errorObj.request.ip
         delete errorObj.trace
     }
